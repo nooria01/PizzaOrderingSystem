@@ -1,0 +1,40 @@
+<div>
+    <h3>Pizza Size</h3>
+    <select [(ngModel)]="selectedSize">
+      <option *ngFor="let size of sizes | keyvalue" [value]="size.key">
+        {{ size.key | titlecase }} (${{ size.value }})
+      </option>
+    </select>
+  </div>
+  
+  <div>
+    <h3>Veg Toppings</h3>
+    <div *ngFor="let topping of vegToppings | keyvalue">
+      <input type="checkbox" [value]="topping.key" (change)="onVegToppingChange($event)">
+      {{ topping.key | titlecase }} (${{ topping.value }})
+    </div>
+  </div>
+  
+  <div>
+    <h3>Non-Veg Toppings</h3>
+    <div *ngFor="let topping of nonVegToppings | keyvalue">
+      <input type="checkbox" [value]="topping.key" (change)="onNonVegToppingChange($event)">
+      {{ topping.key | titlecase }} (${{ topping.value }})
+    </div>
+  </div>
+  
+  <div>
+    <h3>Offer</h3>
+    <select [(ngModel)]="offer">
+      <option value="">Select Offer</option>
+      <option value="Offer1">Offer 1</option>
+      <option value="Offer2">Offer 2</option>
+      <option value="Offer3">Offer 3</option>
+    </select>
+  </div>
+  
+  <div>
+    <h3>Total: ${{ total.toFixed(2) }}</h3>
+    <button (click)="calculateTotal()">Calculate</button>
+  </div>
+  
